@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# file linting
+bin/console lint:yaml config
+bin/console lint:twig templates --env=prod
+
+# schema validation
+bin/console doctrine:schema:validate --skip-sync
+
+# composer validation
+composer validate
+
+# static code analysis
+vendor/bin/phpstan analyse
+
+# code style
+vendor/bin/php-cs-fixer fix --dry-run
+
+# security check
+vendor/bin/security-checker security:check
+
+# tests
+bin/phpunit
