@@ -1,0 +1,36 @@
+name: Pipeline
+
+on: pull_request
+
+jobs:
+    build:
+        name: Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v1
+              with:
+                  fetch-depth: 1
+            - name: Install PHP Dependencies
+              uses: ./.github/actions/composer
+              with:
+                  command: install
+                  argument: --no-scripts
+            - name: Lint Yaml Files
+              run: bin/console lint:yaml config
+            - name: Lint Twig Files
+              run: bin/console lint:twig templates
+            - name: Doctrine Schema Validation
+              run: bin/console doctrine:schema:validate --skip-sync
+            - name: Composer Validation
+              uses: ./.github/actions/composer
+              with:
+                  command: validate
+            - name: Code Style
+              run: vendor/bin/php-cs-fixer fix --dry-run
+            - name: Security Check
+              run: vendor/bin/security-checker security:check
+            - name: Tests
+              run: bin/phpunit
+            - name: Static Code Analysis
+              run: vendor/bin/phpstan analyse

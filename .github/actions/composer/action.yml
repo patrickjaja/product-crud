@@ -1,0 +1,12 @@
+name: Composer Action
+
+inputs:
+    command:
+        description: 'The composer command'
+    argument:
+        description: 'Command arguments'
+
+runs:
+    using: docker
+    image: docker://composer:latest
+    args: ['composer', '${{ inputs.command }}', '--no-interaction', '${{ inputs.argument }}']
