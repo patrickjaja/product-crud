@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h2>Product Search Results for "{{ query }}" ({{ paginator|length }})</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for product in paginator %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>
+                        <a href="{{ path('product_form', {'id': product.id}) }}">
+                            {{ product.name }}
+                        </a>
+                    </td>
+                    <td>{{ product.category.name }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-muted text-center">
+                        <i>no products found</i>
+                    </td>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

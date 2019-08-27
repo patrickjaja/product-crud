@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{{ asset('bootstrap.min.css') }}">
+        <title>{% block title '' %} - Symfony Forms in Detail</title>
+        <style>
+            .jumbotron .container { background: url('{{ asset('logo.svg') }}') bottom right no-repeat; }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="">Product CRUD</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">New Product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">New Category</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" name="query" placeholder="Product Search" aria-label="Product Search">
+                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <main role="main">
+
+            <div class="jumbotron">
+                <div class="container mt-md-3">
+                    <h1 class="display-4">Symfony Forms in Detail</h1>
+                    <p>September 24th &dash; 9:30 - 16:30 &dash; SymfonyLive Berlin 2019 ❤️</p>
+                </div>
+            </div>
+
+            <div class="container mt-md-3">
+                {{ include('_flashes.html.twig') }}
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+        <footer class="container">
+            <hr/>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; {{ 'now'|date('Y') }} <a href="https://twitter.com/xabbuh" target="_blank">Christian Flothmann</a> & <a href="https://twitter.com/el_stoffel" target="_blank">Christopher Hertel</a> &dash; free to use (MIT)</p>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="">Questions?</a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

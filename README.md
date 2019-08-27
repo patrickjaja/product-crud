@@ -1,38 +1,13 @@
 # Symfony Forms in Detail
 
-Repository contains example application used for "Symfony Forms in Detail" at [Web Summer Camp 2019](https://2019.websummercamp.com/)
+Repository contains example application used for "Symfony Forms in Detail" at [SymfonyLive Berlin 2019](https://berlin2019.live.symfony.com/)
 
 ## Requirements
 
 * PHP >= 7.1.3
-* [Doctrine compatible](https://www.doctrine-project.org/projects/doctrine-dbal/en/2.9/reference/introduction.html#introduction) database layer, eg. SQlite
+* [Doctrine compatible](https://www.doctrine-project.org/projects/doctrine-dbal/en/2.9/reference/introduction.html#introduction) database layer, eg. SQLite
 
-or alternatively you could use the VirtualBox image provided by websc organizers, see Slack or email
-
-* VirtualBox 6.0.10
-* VirtualBox Extension Pack
-
-## Setting up using WSC image
-
-* Import & boot virtual maching
-
-**Update repository & Build**
-
-```bash
-$ cd /var/www/html/symfony/forms
-$ git pull
-$ composer install
-```
-
-**Webserver (Symfony CLI)**
-
-```bash
-$ symfony serve -d
-```
-
-and open homepage (https://localhost:8000)
-
-## Setting up w/o WSC image
+## Setting up
 
 **Checkout & Build** 
 
