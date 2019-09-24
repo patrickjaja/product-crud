@@ -67,4 +67,17 @@ class ProductController extends AbstractController
 
         return $this->redirectToRoute('dashboard');
     }
+
+    /**
+     * @Route("/search", name="search", methods={"GET", "POST"})
+     */
+    public function search(Request $request, ProductRepository $repository): Response
+    {
+        $query = $request->query->get('query', '');
+
+        return $this->render('search.html.twig', [
+            'query' => $query,
+            'paginator' => $repository->search($query),
+        ]);
+    }
 }
